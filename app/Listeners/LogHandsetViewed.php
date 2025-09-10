@@ -14,15 +14,9 @@ class LogHandsetViewed
      */
     public function handle(HandsetViewedEvent $event): void
     {
+        $message = '[HandsetViewed] Handset ID: '. implode(',', $event->handSetIds) .' | Version: '. $event->version .' | Timestamp: '. now()->toDateTimeString();
         Log::info(
-            'Handset viewed event handled.',
-            [
-                'id' => $event->handSetIds,
-                'version' => $event->version,
-                'event' => $event
-            ]
-
-            // HandsetViewed] Handset ID: 5 | Version: v1 | Timestamp: 2025-08-02 10:22:00
+            $message,
         );
     }
 }
